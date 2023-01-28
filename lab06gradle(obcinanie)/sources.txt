@@ -1,0 +1,17 @@
+C:\Users\adamc\Desktop\lab06gradle\src\main\java\module-info.java
+C:\Users\adamc\Desktop\lab06gradle\src\main\java\pl\edu\pwr\aczekalski\lab06\BuoyMain.java
+C:\Users\adamc\Desktop\lab06gradle\src\main\java\pl\edu\pwr\aczekalski\lab06\HeadQuartersMain.java
+C:\Users\adamc\Desktop\lab06gradle\src\main\java\pl\edu\pwr\aczekalski\lab06\ShipMain.java
+C:\Users\adamc\Desktop\lab06gradle\src\main\java\pl\edu\pwr\aczekalski\lab06\WorldMain.java
+C:\Users\adamc\Desktop\lab06gradle\src\main\java\pl\edu\pwr\aczekalski\lab06\maker\buoy\MakeBuoys.java
+C:\Users\adamc\Desktop\lab06gradle\src\main\java\pl\edu\pwr\aczekalski\lab06\maker\ship\MakeShips.java
+C:\Users\adamc\Desktop\lab06gradle\src\main\java\pl\edu\pwr\aczekalski\lab06\model\board\Board.java
+C:\Users\adamc\Desktop\lab06gradle\src\main\java\pl\edu\pwr\aczekalski\lab06\model\board\Field.java
+C:\Users\adamc\Desktop\lab06gradle\src\main\java\pl\edu\pwr\aczekalski\lab06\model\board\Sector.java
+C:\Users\adamc\Desktop\lab06gradle\src\main\java\pl\edu\pwr\aczekalski\lab06\model\buoy\Buoy.java
+C:\Users\adamc\Desktop\lab06gradle\src\main\java\pl\edu\pwr\aczekalski\lab06\model\buoy\BuoyHandler.java
+C:\Users\adamc\Desktop\lab06gradle\src\main\java\pl\edu\pwr\aczekalski\lab06\model\buoy\BuoyLogic.java
+C:\Users\adamc\Desktop\lab06gradle\src\main\java\pl\edu\pwr\aczekalski\lab06\model\buoy\CalculateMASL.java
+C:\Users\adamc\Desktop\lab06gradle\src\main\java\pl\edu\pwr\aczekalski\lab06\model\ship\Direction.java
+C:\Users\adamc\Desktop\lab06gradle\src\main\java\pl\edu\pwr\aczekalski\lab06\model\ship\Ship.java
+C:\Users\adamc\Desktop\lab06gradle\src\main\java\pl\edu\pwr\aczekalski\lab06\model\ship\ShipLogic.java
