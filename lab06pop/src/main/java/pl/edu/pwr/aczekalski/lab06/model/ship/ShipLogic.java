@@ -33,11 +33,11 @@ public class ShipLogic {
 
     }
 
-    private boolean canMoveX(int posX) { //metoda sprawdzająca czy gracz nie wyszedł poza pole
+    private boolean canMoveX(int posX) { //method checking if ship didn't go out of the board in X axle
         return !(posX < 0 || posX >= fieldLabelsArray.size());
     }
 
-    private boolean canMoveY(int posY) { //metoda sprawdzająca czy gracz nie wyszedł poza pole
+    private boolean canMoveY(int posY) { //method checking if ship didn't go out of the board in Y axle
         return !(posY < 0 || posY >= fieldLabelsArray.size());
     }
 

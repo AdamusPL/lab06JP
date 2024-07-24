@@ -26,13 +26,12 @@ public class HeadQuartersUX extends JFrame {
 
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        contentPane.setLayout(null); //zeby mozna bylo dowolnie ustawiac miejsca panelow w ramce
+        contentPane.setLayout(null);
 
         simPanel = new JPanel();
         simPanel.setBounds(5, 5, 700, 500);
         simPanel.setLayout(null);
 
-        //tu dodaj rzeczy do okienka
         board.makeBoard();
 
         for (ArrayList<Field> rowArray : board.getFieldLabelsArray()) {
@@ -45,7 +44,7 @@ public class HeadQuartersUX extends JFrame {
 
         contentPane.add(simPanel, BorderLayout.CENTER);
         setContentPane(contentPane);
-        setLocationRelativeTo(null); //ustawienie ramki na środek ekranu
+        setLocationRelativeTo(null);
         setAlwaysOnTop(true);
         setTitle("Wave Map");
         setVisible(true);

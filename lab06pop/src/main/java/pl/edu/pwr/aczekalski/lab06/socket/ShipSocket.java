@@ -111,36 +111,28 @@ public class ShipSocket implements ActionListener {
                     try {
                         switch (button.getText()) {
                             case "N":
-                                direction.setX(0);
-                                direction.setY(-1);
+                                setDirection(0, -1);
                                 break;
                             case "NE":
-                                direction.setX(1);
-                                direction.setY(-1);
+                                setDirection(1, -1);
                                 break;
                             case "E":
-                                direction.setX(1);
-                                direction.setY(0);
+                                setDirection(1, 0);
                                 break;
                             case "SE":
-                                direction.setX(1);
-                                direction.setY(1);
+                                setDirection(1, 1);
                                 break;
                             case "S":
-                                direction.setX(0);
-                                direction.setY(1);
+                                setDirection(0, 1);
                                 break;
                             case "SW":
-                                direction.setX(-1);
-                                direction.setY(1);
+                                setDirection(-1, 1);
                                 break;
                             case "W":
-                                direction.setX(-1);
-                                direction.setY(0);
+                                setDirection(-1, 0);
                                 break;
                             case "NW":
-                                direction.setX(-1);
-                                direction.setY(-1);
+                                setDirection(-1, -1);
                                 break;
                         }
 
@@ -152,6 +144,11 @@ public class ShipSocket implements ActionListener {
                 }
             }
         }
+    }
+
+    private void setDirection(int x, int y){
+        direction.setX(x);
+        direction.setY(y);
     }
 
 }
