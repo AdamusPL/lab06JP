@@ -2,7 +2,6 @@ package pl.edu.pwr.aczekalski.lab06.model.ship;
 
 import pl.edu.pwr.aczekalski.lab06.model.buoy.BuoyHandler;
 
-import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,29 +12,46 @@ import java.util.List;
 public class Ship extends Thread {
     int id;
 
-    public Socket clientSocket;
-    public PrintWriter out;
-    public BufferedReader in;
+    private Socket clientSocket;
+    private PrintWriter out;
+    private BufferedReader in;
 
-    ArrayList<BuoyHandler> buoyHandlers;
+    public PrintWriter getOut() {
+        return out;
+    }
 
-    ShipLogic shipLogic;
-    public int shipPositionX;
-    public int shipPositionY;
-    JPanel simPanel;
+    private ArrayList<BuoyHandler> buoyHandlers;
 
+    private ShipLogic shipLogic;
+    private int shipPositionX;
+    private int shipPositionY;
+
+    public void setShipPositionY(int shipPositionY) {
+        this.shipPositionY = shipPositionY;
+    }
+
+    public void setShipPositionX(int shipPositionX) {
+        this.shipPositionX = shipPositionX;
+    }
+
+    public int getShipPositionX() {
+        return shipPositionX;
+    }
+
+    public int getShipPositionY() {
+        return shipPositionY;
+    }
 
     public Ship(Socket clientSocket, int id, int shipPositionX, int shipPositionY, ShipLogic shipLogic, ArrayList<BuoyHandler> buoyHandlers,
-                JPanel simPanel, BufferedReader in, PrintWriter out) throws IOException {
-        this.clientSocket =clientSocket;
-        this.in=in;
-        this.out=out;
-        this.shipPositionX=shipPositionX;
-        this.shipPositionY=shipPositionY;
-        this.shipLogic=shipLogic;
-        this.id=id;
-        this.simPanel=simPanel;
-        this.buoyHandlers=buoyHandlers;
+                BufferedReader in, PrintWriter out) {
+        this.clientSocket = clientSocket;
+        this.in = in;
+        this.out = out;
+        this.shipPositionX = shipPositionX;
+        this.shipPositionY = shipPositionY;
+        this.shipLogic = shipLogic;
+        this.id = id;
+        this.buoyHandlers = buoyHandlers;
     }
 
     @Override
@@ -45,11 +61,11 @@ public class Ship extends Thread {
                 String command = null;
                 command = in.readLine();
 
-                if (command.contains("MOVE")) { //jeśli statek wysłał komendę MOVE
-                    String[] split = command.split(","); //rozdziel dane
+                if (command.contains("MOVE")) { //if ship sent MOVE command
+                    String[] split = command.split(","); //separate data
                     List<Integer> converted = new ArrayList<Integer>();
                     for (String number : split) {
-                        if(!number.equals("MOVE")) {
+                        if (!number.equals("MOVE")) {
                             converted.add(Integer.parseInt(number.trim()));
                         }
                     }
@@ -57,11 +73,11 @@ public class Ship extends Thread {
                     int directionX = converted.get(0);
                     int directionY = converted.get(1);
 
-                    shipLogic.move(this,simPanel,directionX,directionY); //sprawdź czy może się ruszyć
+                    shipLogic.move(this, directionX, directionY); //check if ship can move
 
-                    for (BuoyHandler b: buoyHandlers) { //null
-                        if((Math.abs(b.buoyPositionX-shipPositionX)<=4 && Math.abs(b.buoyPositionY-shipPositionY)<=4)){
-                            b.out.println(shipPositionX+","+shipPositionY);
+                    for (BuoyHandler b : buoyHandlers) { //null
+                        if ((Math.abs(b.getBuoyPositionX() - shipPositionX) <= 4 && Math.abs(b.getBuoyPositionY() - shipPositionY) <= 4)) {
+                            b.getOut().println(shipPositionX + "," + shipPositionY);
                         }
                     }
 
@@ -69,12 +85,10 @@ public class Ship extends Thread {
                     Thread.sleep(100);
                 }
 
-                if ("SCAN".equals(command)) { //zeskanuj w poszukiwaniu innych statków jeśli statek wysłał SCAN
+                if ("SCAN".equals(command)) { //scan to find other ships if SCAN command was called
                     shipLogic.scan(this);
                     Thread.sleep(100);
-                }
-
-                else {
+                } else {
                     System.out.println();
                     out.println();
                 }
@@ -84,7 +98,7 @@ public class Ship extends Thread {
             System.err.println(e.getStackTrace());
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
-        } finally{
+        } finally {
             out.close();
             try {
                 in.close();

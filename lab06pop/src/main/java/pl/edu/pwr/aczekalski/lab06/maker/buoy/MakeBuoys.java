@@ -9,18 +9,18 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class MakeBuoys {
-    int buoyPositionX;
-    int buoyPositionY;
-    ArrayList<Buoy> buoys;
-    Board board;
+    private int buoyPositionX;
+    private int buoyPositionY;
+    private ArrayList<Buoy> buoys;
+    private Board board;
 
-    public MakeBuoys(Socket clientSocket, int id, int buoyPositionX, int buoyPositionY, ArrayList<Buoy> buoys, Board board){
-        this.clientSocket=clientSocket;
-        this.id=id;
-        this.buoyPositionX=buoyPositionX;
-        this.buoyPositionY=buoyPositionY;
-        this.buoys=buoys;
-        this.board=board;
+    public MakeBuoys(Socket clientSocket, int id, int buoyPositionX, int buoyPositionY, ArrayList<Buoy> buoys, Board board) {
+        this.clientSocket = clientSocket;
+        this.id = id;
+        this.buoyPositionX = buoyPositionX;
+        this.buoyPositionY = buoyPositionY;
+        this.buoys = buoys;
+        this.board = board;
     }
 
     int id;
@@ -28,8 +28,8 @@ public class MakeBuoys {
 
     public ArrayList<Buoy> addBuoy() throws IOException {
         BuoyLogic buoyLogic = new BuoyLogic();
-        Buoy buoy = new Buoy(id,clientSocket,buoyPositionX,buoyPositionY,board,buoyLogic);
-        buoy.out.println(buoyPositionX+","+buoyPositionY);
+        Buoy buoy = new Buoy(id, clientSocket, buoyPositionX, buoyPositionY, board, buoyLogic);
+        buoy.getOut().println(buoyPositionX + "," + buoyPositionY);
         buoy.start();
         buoys.add(buoy);
         return buoys;

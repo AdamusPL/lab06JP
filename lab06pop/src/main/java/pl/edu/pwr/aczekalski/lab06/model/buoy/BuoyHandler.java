@@ -5,19 +5,30 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 public class BuoyHandler {
-    public int buoyPositionX;
-    public int buoyPositionY;
+    private int buoyPositionX;
+    private int buoyPositionY;
+    private Socket clientSocket;
+    private PrintWriter out;
+    private BufferedReader in;
 
-    public Socket clientSocket;
-    public PrintWriter out;
-    public BufferedReader in;
+    public int getBuoyPositionX() {
+        return buoyPositionX;
+    }
+
+    public int getBuoyPositionY() {
+        return buoyPositionY;
+    }
+
+    public PrintWriter getOut() {
+        return out;
+    }
 
     public BuoyHandler(Socket clientSocket, PrintWriter out, BufferedReader in, int buoyPositionX, int buoyPositionY) {
         this.clientSocket = clientSocket;
         this.out = out;
         this.in = in;
-        this.buoyPositionX=buoyPositionX;
-        this.buoyPositionY=buoyPositionY;
+        this.buoyPositionX = buoyPositionX;
+        this.buoyPositionY = buoyPositionY;
     }
 
 }

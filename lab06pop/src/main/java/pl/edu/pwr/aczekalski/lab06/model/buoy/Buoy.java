@@ -11,16 +11,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Buoy extends Thread {
-    int id;
-    public Socket clientSocket;
-    public PrintWriter out;
-    public BufferedReader in;
-    BuoyLogic buoyLogic;
-    int buoyPositionX;
-    int buoyPositionY;
-    Board board;
+    private int id;
+    private Socket clientSocket;
+    private PrintWriter out;
+    private BufferedReader in;
+    private BuoyLogic buoyLogic;
+    private int buoyPositionX;
+    private int buoyPositionY;
+    private Board board;
 
-    public Buoy(int id, Socket clientSocket, int buoyPositionX, int buoyPositionY, Board board,  BuoyLogic buoyLogic) throws IOException {
+    public PrintWriter getOut() {
+        return out;
+    }
+
+    public Buoy(int id, Socket clientSocket, int buoyPositionX, int buoyPositionY, Board board, BuoyLogic buoyLogic) throws IOException {
         this.id = id;
         this.clientSocket = clientSocket;
         in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
@@ -28,7 +32,7 @@ public class Buoy extends Thread {
         this.buoyPositionX = buoyPositionX;
         this.buoyPositionY = buoyPositionY;
         this.board = board;
-        this.buoyLogic=buoyLogic;
+        this.buoyLogic = buoyLogic;
     }
 
     @Override
@@ -48,8 +52,8 @@ public class Buoy extends Thread {
                     converted.add(Integer.parseInt(number.trim()));
                 }
 
-                int shipPositionX=converted.get(0);
-                int shipPositionY=converted.get(1);
+                int shipPositionX = converted.get(0);
+                int shipPositionY = converted.get(1);
 
                 buoyLogic.makeWave(buoyPositionX, buoyPositionY, shipPositionX, shipPositionY, board);
 
